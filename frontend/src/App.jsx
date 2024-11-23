@@ -18,6 +18,26 @@ const App = () => {
     b.title.toLowerCase().includes(query.toLowerCase())
   );
 
+  const [folderName, setFolderName] = useState("");
+  const createFolder = () => {
+    fetch("/api/bookmarks/folders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: folderName }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Folder created:", data);
+        // Optionally refresh the folder list
+      })
+      .catch((err) => alert("Error creating folder"));
+  };
+
+return (
+  <div>
+    
+  </div>
+);
   const checkLiveStatus = () => {
     fetch("/api/bookmarks/status")
       .then(() => alert("Status check completed!"))
@@ -43,6 +63,19 @@ const App = () => {
     <div>
       <h1>Bookmark Manager</h1>
       <SearchBar query={query} setQuery={setQuery} />
+      <input
+      type="text"
+      value={folderName}
+      onChange={(e) => setFolderName(e.target.value)}
+      placeholder="New folder name"
+      />
+      <button onClick={createFolder}>Create Folder</button><input
+      type="text"
+      value={folderName}
+      onChange={(e) => setFolderName(e.target.value)}
+      placeholder="New folder name"
+      />
+      <button onClick={createFolder}>Create Folder</button>
       <button onClick={checkLiveStatus}>Check Live Status</button>
       <button onClick={exportBookmarks}>Export Bookmarks</button>
       <UploadForm />
