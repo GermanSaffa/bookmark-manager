@@ -4,12 +4,17 @@ const fetch = require('node-fetch');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
+const bookmarkRoutes = require("./routes/bookmarkRoutes");
+
 const app = express();
 const PORT = 3000;
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+
+// Routes
+app.use("/api/bookmarks", bookmarkRoutes);
 
 // Database setup
 const db = new sqlite3.Database('./db.sqlite');
