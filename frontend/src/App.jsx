@@ -33,11 +33,6 @@ const App = () => {
       .catch((err) => alert("Error creating folder"));
   };
 
-return (
-  <div>
-    
-  </div>
-);
   const checkLiveStatus = () => {
     fetch("/api/bookmarks/status")
       .then(() => alert("Status check completed!"))
