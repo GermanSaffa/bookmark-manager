@@ -14,4 +14,7 @@ router.get("/status", checkLiveStatus);
 // Get duplicates
 router.get("/duplicates", getDuplicates);
 
+// Export bookmarks
+router.get("/export", exportBookmarks);
+
 module.exports = router;
