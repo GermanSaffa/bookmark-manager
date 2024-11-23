@@ -24,11 +24,27 @@ const App = () => {
       .catch((err) => alert("Error checking status"));
   };
 
+  const exportBookmarks = () => {
+  fetch("/api/bookmarks/export")
+    .then((res) => res.blob())
+    .then((blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "bookmarks.json");
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+    })
+    .catch((err) => alert("Error exporting bookmarks"));
+};
+
   return (
     <div>
       <h1>Bookmark Manager</h1>
       <SearchBar query={query} setQuery={setQuery} />
       <button onClick={checkLiveStatus}>Check Live Status</button>
+      <button onClick={exportBookmarks}>Export Bookmarks</button>
       <UploadForm />
       <DuplicateViewer />
       <BookmarkList bookmarks={filteredBookmarks} />
