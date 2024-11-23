@@ -2,32 +2,29 @@
 
 A simple, self-hosted web application for managing bookmarks. This tool allows you to upload bookmarks from multiple browsers, check if they are live, detect duplicates, and organize them into folders. Perfect for hosting on a Synology NAS or any other server.
 
-Features
+# Features:
+Upload bookmarks from different browsers.
+Organize bookmarks by folders.
+Search bookmarks by title.
+Check if bookmarks are live and display their status (e.g., Live, Broken).
+Detect and display duplicate bookmarks.
 
-	•	Upload bookmarks from different browsers.
-	•	Organize bookmarks by folders.
-	•	Search bookmarks by title.
-	•	Check if bookmarks are live and display their status (e.g., Live, Broken).
-	•	Detect and display duplicate bookmarks.
+# Tech Stack:
+Frontend: React
+Backend: Express.js
+Database: SQLite
+Deployment: Docker, Docker Compose
 
-Tech Stack
+# Installation:
 
-	•	Frontend: React
-	•	Backend: Express.js
-	•	Database: SQLite
-	•	Deployment: Docker, Docker Compose
-
-Installation
-
-Prerequisites
-
-	•	Node.js (LTS version recommended)
-	•	Docker and Docker Compose
-	•	A server or NAS (e.g., Synology) for hosting
+Prerequisites:
+Node.js (LTS version recommended)
+Docker and Docker Compose
+A server or NAS (e.g., Synology) for hosting
 
 Clone the Repository
 
-git clone https://github.com/your-username/bookmark-manager.git
+git clone https://github.com/GermanSaffa/bookmark-manager.git
 cd bookmark-manager
 
 Backend Setup
