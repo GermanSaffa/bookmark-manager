@@ -33,6 +33,20 @@ const App = () => {
       .catch((err) => alert("Error creating folder"));
   };
 
+  const moveBookmark = (bookmarkId, folderId) => {
+    fetch(`/api/bookmarks/${bookmarkId}/move`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ folder_id: folderId }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Bookmark moved:", data);
+        // Optionally refresh the bookmark list
+      })
+      .catch((err) => alert("Error moving bookmark"));
+    };
+  
   const checkLiveStatus = () => {
     fetch("/api/bookmarks/status")
       .then(() => alert("Status check completed!"))
