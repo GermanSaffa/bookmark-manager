@@ -16,18 +16,6 @@ app.use(bodyParser.json());
 // Routes
 app.use("/api/bookmarks", bookmarkRoutes);
 
-// Database setup
-const db = new sqlite3.Database('./db.sqlite');
-db.run(`
-  CREATE TABLE IF NOT EXISTS bookmarks (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT,
-    url TEXT,
-    folder TEXT,
-    status TEXT DEFAULT 'unknown'
-  )
-`);
-
 // Get all bookmarks
 app.get('/api/bookmarks', (req, res) => {
   db.all('SELECT * FROM bookmarks', [], (err, rows) => {
