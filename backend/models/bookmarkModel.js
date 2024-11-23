@@ -47,4 +47,18 @@ const getDuplicates = (req, res) => {
   });
 };
 
-module.exports = { getBookmarks, addBookmark, checkLiveStatus, getDuplicates };
+// Export Bookmarks
+const exportBookmarks = (req, res) => {
+  db.all("SELECT * FROM bookmarks", [], (err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+
+    // Set response headers for file download
+    res.setHeader("Content-Type", "application/json");
+    res.setHeader("Content-Disposition", "attachment; filename=bookmarks.json");
+
+    // Send bookmarks as JSON
+    res.send(JSON.stringify(rows, null, 2));
+  });
+};
+
+module.exports = { getBookmarks, addBookmark, checkLiveStatus, getDuplicates, exportBookmarks };
